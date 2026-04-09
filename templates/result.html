@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Design</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- 🌫️ BACKGROUND -->
+<div id="bg" class="bg"></div>
+
+<div class="result-layout">
+
+    <!-- 🖼️ IMAGE SECTION -->
+    <div class="result-image">
+        <img src="{{ url_for('static', filename='output.png') }}">
+    </div>
+
+    <!-- 📋 INFO PANEL -->
+    <div class="result-info">
+
+        <h1>Your Design ✨</h1>
+
+        <div class="info-box">
+            <p><b>Room:</b> {{ room }}</p>
+            <p><b>Style:</b> {{ style }}</p>
+            <p><b>Budget:</b> {{ budget }}</p>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="actions">
+            <a href="/" class="btn">🔁 Try Again</a>
+            <a href="/static/output.png" download class="btn secondary">⬇ Download</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

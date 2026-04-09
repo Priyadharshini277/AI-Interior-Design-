@@ -1,0 +1,339 @@
+/* ===== BASE ===== */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* ===== BACKGROUND ===== */
+.bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background-size: cover;
+    background-position: center;
+
+    filter: blur(14px) brightness(0.6);
+    transition: background-image 0.6s ease;
+
+    animation: zoom 20s infinite alternate;
+}
+
+/* subtle zoom animation */
+@keyframes zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+/* ===== MAIN OVERLAY ===== */
+.main-content {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0,0,0,0.4);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    text-align: center;
+    color: white;
+}
+
+/* ===== CARD (UPGRADED GLASS) ===== */
+.card {
+    margin-top: 20px;
+    padding: 35px;
+    width: 420px;
+
+    background: rgba(255,255,255,0.10);
+    border-radius: 18px;
+
+    backdrop-filter: blur(25px);
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+
+    animation: float 4s ease-in-out infinite;
+    transition: 0.3s;
+}
+
+/* hover lift */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* floating animation */
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ===== INPUT GROUP ===== */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* ===== FLOATING LABEL ===== */
+.input-group label {
+    position: absolute;
+    top: -8px;
+    left: 12px;
+
+    font-size: 11px;
+    background: rgba(0,0,0,0.6);
+    padding: 2px 6px;
+    border-radius: 5px;
+
+    color: #ccc;
+}
+
+/* ===== SELECT ===== */
+select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+
+    background: #ffffff;
+    color: #111;
+
+    font-size: 14px;
+    margin-top: 6px;
+
+    transition: 0.2s;
+}
+
+/* dropdown fix */
+select option {
+    background: #ffffff;
+    color: #111;
+}
+
+/* focus */
+select:focus {
+    outline: none;
+    border-color: #999;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+}
+
+/* hover */
+select:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ===== TEXTAREA ===== */
+textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+
+    background: #ffffff;
+    color: #111;
+
+    font-size: 14px;
+    margin-top: 6px;
+
+    resize: none;
+    height: 110px;
+
+    transition: 0.2s;
+}
+
+/* placeholder */
+textarea::placeholder {
+    color: #888;
+}
+
+/* focus */
+textarea:focus {
+    outline: none;
+    border-color: #999;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+}
+
+/* hover */
+textarea:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ===== BUTTON ===== */
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+
+    border-radius: 12px;
+    border: none;
+
+    background: white;
+    color: black;
+
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+button:hover {
+    background: #f2f2f2;
+    transform: translateY(-2px);
+}
+
+/* ===== PROMPT CHIPS ===== */
+.chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.chip {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.chip:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+/* ===== CLEAN LOADER ===== */
+.loader {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+
+    justify-content: center;
+    align-items: center;
+}
+
+/* card */
+.loader-card {
+    padding: 28px;
+    width: 300px;
+
+    background: rgba(255,255,255,0.08);
+    border-radius: 14px;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+
+    text-align: center;
+    color: white;
+}
+
+/* progress bar */
+.progress-container {
+    width: 100%;
+    height: 6px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.15);
+    overflow: hidden;
+    margin: 18px 0;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    width: 0%;
+
+    background: #ffffff;
+    border-radius: 8px;
+
+    transition: width 0.25s ease;
+}
+
+/* text */
+#progress-text {
+    font-size: 13px;
+    color: #ccc;
+}
+
+#progress-percent {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+}
+/* ===== RESULT LAYOUT ===== */
+.result-layout {
+    display: flex;
+    height: 100vh;
+}
+
+/* ===== IMAGE SECTION ===== */
+.result-image {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-image img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 15px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* ===== INFO PANEL ===== */
+.result-info {
+    flex: 1;
+    padding: 40px;
+
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(20px);
+
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.result-info h1 {
+    font-size: 28px;
+}
+
+/* INFO BOX */
+.info-box {
+    margin-top: 20px;
+    padding: 20px;
+
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+}
+
+/* ACTION BUTTONS */
+.actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+
+    background: white;
+    color: black;
+
+    font-weight: 500;
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}

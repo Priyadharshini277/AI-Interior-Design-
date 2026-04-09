@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interior AI</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- 🌫️ BACKGROUND -->
+<div id="bg" class="bg"></div>
+
+<!-- 🌙 MAIN -->
+<div class="main-content">
+
+    <div class="container">
+
+        <h1>AI Interior Designer</h1>
+        <p class="subtitle">Create realistic interior designs in seconds</p>
+
+        <div class="card">
+
+            <form method="POST" onsubmit="showLoader()">
+
+                <!-- ROOM -->
+                <div class="input-group">
+                    <label>Room Type</label>
+                    <select name="room" id="room" onchange="changeBackground()">
+                        <option value="bedroom">Bedroom</option>
+                        <option value="living">Living Room</option>
+                        <option value="kitchen">Kitchen</option>
+                    </select>
+                </div>
+
+                <!-- STYLE -->
+                <div class="input-group">
+                    <label>Style</label>
+                    <select name="style">
+                        <option>Modern</option>
+                        <option>Minimal</option>
+                        <option>Aesthetic</option>
+                        <option>Luxury</option>
+                    </select>
+                </div>
+
+                <!-- BUDGET -->
+                <div class="input-group">
+                    <label>Budget</label>
+                    <select name="budget">
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+                    </select>
+                </div>
+
+                <!-- ✨ PROMPT SUGGESTIONS -->
+                <div class="chips">
+                    <div class="chip" onclick="fillPrompt('Luxury modern bedroom with warm lighting')">Luxury</div>
+                    <div class="chip" onclick="fillPrompt('Minimal white living room with plants')">Minimal</div>
+                    <div class="chip" onclick="fillPrompt('Cozy wooden aesthetic room with soft lights')">Cozy</div>
+                </div>
+
+                <!-- PROMPT -->
+                <div class="input-group">
+                    <label>Custom Prompt</label>
+                    <textarea id="prompt" name="custom_prompt" placeholder="Describe your dream space..."></textarea>
+                </div>
+
+                <button type="submit">Generate Design</button>
+
+            </form>
+
+        </div>
+
+        <!-- 🖼️ PREVIEW PANEL -->
+        <div class="preview">
+            <p>✨ Your generated design will appear here</p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- 🔥 LOADER -->
+<div id="loader" class="loader">
+    <div class="loader-card">
+
+        <h2>Generating your design...</h2>
+
+        <div class="progress-container">
+            <div class="progress-bar-inner" id="progress"></div>
+        </div>
+
+        <p id="progress-text">Preparing...</p>
+        <p id="progress-percent">0%</p>
+
+    </div>
+</div>
+
+<!-- 🔥 SCRIPT -->
+<script>
+
+// 🌄 BACKGROUND CHANGE
+function changeBackground() {
+    let room = document.getElementById("room").value;
+    let bg = document.getElementById("bg");
+
+    if (room === "bedroom") {
+        bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0')";
+    } 
+    else if (room === "living") {
+        bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7')";
+    } 
+    else {
+        bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')";
+    }
+}
+
+// ✨ FILL PROMPT FROM CHIPS
+function fillPrompt(text) {
+    document.getElementById("prompt").value = text;
+}
+
+// ⏳ LOADER
+function showLoader() {
+    document.getElementById("loader").style.display = "flex";
+
+    let progressBar = document.getElementById("progress");
+    let progressText = document.getElementById("progress-text");
+
+    let progress = 0;
+
+    function updateProgress() {
+        if (progress < 85) {
+            progress += Math.random() * 5;
+            progressBar.style.width = progress + "%";
+
+            if (progress < 30) progressText.innerText = "Analyzing...";
+            else if (progress < 60) progressText.innerText = "Generating...";
+            else progressText.innerText = "Finalizing...";
+
+            setTimeout(updateProgress, 400);
+        }
+    }
+
+    updateProgress();
+}
+
+// Default background
+window.onload = changeBackground;
+function showLoader() {
+    document.getElementById("loader").style.display = "flex";
+
+    let progressBar = document.getElementById("progress");
+    let progressText = document.getElementById("progress-text");
+    let percentText = document.getElementById("progress-percent");
+
+    let progress = 0;
+
+    function updateProgress() {
+        if (progress < 90) {
+
+            progress += Math.random() * 3; // smooth increment
+            progressBar.style.width = progress + "%";
+            percentText.innerText = Math.floor(progress) + "%";
+
+            if (progress < 30) {
+                progressText.innerText = "Analyzing...";
+            } 
+            else if (progress < 60) {
+                progressText.innerText = "Generating...";
+            } 
+            else {
+                progressText.innerText = "Finalizing...";
+            }
+
+            setTimeout(updateProgress, 200);
+        }
+    }
+
+    updateProgress();
+}
+
+</script>
+
+</body>
+</html>
