@@ -38,7 +38,7 @@ An AI-powered web application that generates realistic interior design images ba
 ---
 
 ## 📂 Project Structure
-
+---
 AI-Interior-Design/
 │
 ├── app.py
